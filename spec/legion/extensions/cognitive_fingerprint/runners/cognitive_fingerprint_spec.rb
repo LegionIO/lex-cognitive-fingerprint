@@ -5,8 +5,8 @@ require 'legion/extensions/cognitive_fingerprint/client'
 RSpec.describe Legion::Extensions::CognitiveFingerprint::Runners::CognitiveFingerprint do
   let(:client) { Legion::Extensions::CognitiveFingerprint::Client.new }
 
-  def seed_trait(category, value, n = 10)
-    n.times { client.record_observation(category: category, value: value) }
+  def seed_trait(category, value, count = 10)
+    count.times { client.record_observation(category: category, value: value) }
   end
 
   describe '#record_observation' do
@@ -126,18 +126,18 @@ RSpec.describe Legion::Extensions::CognitiveFingerprint::Runners::CognitiveFinge
       seed_trait(:caution, 0.2)
     end
 
-    it 'returns top n traits by default' do
+    it 'returns top 3 traits by default' do
       result = client.strongest_traits
       expect(result[:traits].size).to be <= 3
     end
 
-    it 'respects n keyword' do
-      result = client.strongest_traits(n: 1)
+    it 'respects top_n keyword' do
+      result = client.strongest_traits(top_n: 1)
       expect(result[:traits].size).to eq(1)
     end
 
     it 'sorted by baseline descending' do
-      result = client.strongest_traits(n: 2)
+      result = client.strongest_traits(top_n: 2)
       traits = result[:traits]
       expect(traits.first[:baseline]).to be >= traits.last[:baseline]
     end
@@ -150,13 +150,13 @@ RSpec.describe Legion::Extensions::CognitiveFingerprint::Runners::CognitiveFinge
       seed_trait(:caution, 0.2)
     end
 
-    it 'returns bottom n traits' do
+    it 'returns bottom 3 traits by default' do
       result = client.weakest_traits
       expect(result[:traits].size).to be <= 3
     end
 
     it 'sorted by baseline ascending' do
-      result = client.weakest_traits(n: 2)
+      result = client.weakest_traits(top_n: 2)
       traits = result[:traits]
       expect(traits.first[:baseline]).to be <= traits.last[:baseline]
     end

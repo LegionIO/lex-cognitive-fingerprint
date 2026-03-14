@@ -39,12 +39,12 @@ module Legion
             { profile: fingerprint_engine.trait_profile }
           end
 
-          def strongest_traits(n: 3, **)
-            { traits: fingerprint_engine.strongest_traits(n.to_i) }
+          def strongest_traits(top_n: 3, **)
+            { traits: fingerprint_engine.strongest_traits(top_n.to_i) }
           end
 
-          def weakest_traits(n: 3, **)
-            { traits: fingerprint_engine.weakest_traits(n.to_i) }
+          def weakest_traits(top_n: 3, **)
+            { traits: fingerprint_engine.weakest_traits(top_n.to_i) }
           end
 
           def identity_confidence(**)

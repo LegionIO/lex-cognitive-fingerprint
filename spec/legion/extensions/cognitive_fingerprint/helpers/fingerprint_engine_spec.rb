@@ -74,9 +74,9 @@ RSpec.describe Legion::Extensions::CognitiveFingerprint::Helpers::FingerprintEng
 
       it 'returns :verified for matching observations' do
         result = engine.verify_identity(observations: [
-          { category: :accuracy, value: 0.8 },
-          { category: :creativity, value: 0.6 }
-        ])
+                                          { category: :accuracy, value: 0.8 },
+                                          { category: :creativity, value: 0.6 }
+                                        ])
         expect(result[:verdict]).to eq(:verified)
       end
 
@@ -87,9 +87,9 @@ RSpec.describe Legion::Extensions::CognitiveFingerprint::Helpers::FingerprintEng
 
       it 'returns observations_checked count' do
         result = engine.verify_identity(observations: [
-          { category: :accuracy, value: 0.8 },
-          { category: :creativity, value: 0.6 }
-        ])
+                                          { category: :accuracy, value: 0.8 },
+                                          { category: :creativity, value: 0.6 }
+                                        ])
         expect(result[:observations_checked]).to eq(2)
       end
     end

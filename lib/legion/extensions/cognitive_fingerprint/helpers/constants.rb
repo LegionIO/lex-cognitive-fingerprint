@@ -23,7 +23,7 @@ module Legion
           DEVIATION_THRESHOLD = 0.3
 
           IDENTITY_CONFIDENCE_LABELS = [
-            { range: (0.85..1.0),  label: :certain },
+            { range: (0.85..1.0), label: :certain },
             { range: (0.65...0.85), label: :confident },
             { range: (0.40...0.65), label: :developing },
             { range: (0.20...0.40), label: :uncertain },
@@ -31,7 +31,7 @@ module Legion
           ].freeze
 
           TRAIT_STRENGTH_LABELS = [
-            { range: (0.80..1.0),  label: :dominant },
+            { range: (0.80..1.0), label: :dominant },
             { range: (0.60...0.80), label: :strong },
             { range: (0.40...0.60), label: :moderate },
             { range: (0.20...0.40), label: :weak },
