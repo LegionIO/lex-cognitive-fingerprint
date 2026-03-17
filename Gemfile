@@ -12,4 +12,8 @@ group :test do
   gem 'simplecov'
 end
 
-gem 'legion-gaia', path: '../../legion-gaia'
+if File.directory?(File.expand_path('../../legion-gaia', __dir__))
+  gem 'legion-gaia', path: '../../legion-gaia'
+else
+  gem 'legion-gaia'
+end
